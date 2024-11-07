@@ -17,7 +17,7 @@ def create_user(user: schemas.UserCreate ,db: Session = Depends(get_db)):
 
     # можно добавить хз только как чтобы при вводе повторяющейся почты присылало ошибку не 500 а чтобы писало 404 что имейл уже существует
 
-    new_user = models.User(**user.dict())
+    new_user = models.User(**user.model_dump())
     db.add(new_user)
     db.commit()
     db.refresh(new_user)

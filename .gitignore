@@ -1,3 +1,6 @@
 __pycache__
 venv/
 .env
+some commands.txt
+calculations.py
+test_calculations.py

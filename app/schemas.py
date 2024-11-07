@@ -1,4 +1,4 @@
-from pydantic import BaseModel, EmailStr, Field
+from pydantic import BaseModel, EmailStr, Field, ConfigDict
 from pydantic.types import conint
 from typing_extensions import Annotated
 from datetime import datetime
@@ -14,8 +14,7 @@ class UserOut(BaseModel):
     email: EmailStr
     created_at: datetime
 
-    class Config:
-        from_attributes = True
+    model_config = ConfigDict(from_attributes=True)
 
 class UserLogin(BaseModel):
     email: EmailStr
@@ -36,15 +35,13 @@ class Post(PostBase):
     owner_id: int
     owner: UserOut
 
-    class Config:
-        from_attributes = True
+    model_config = ConfigDict(from_attributes=True)
 
 class PostOut(BaseModel):
     Post: Post
     votes: int
 
-    class Config:
-        from_attributes = True
+    model_config = ConfigDict(from_attributes=True)
 
 ####### TOKEN SCHEMAS #########
 class Token(BaseModel):
